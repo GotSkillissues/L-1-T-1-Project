@@ -38,7 +38,7 @@ int count = 0;
 int count2 = 0;
 int count3 = 0;
 int lyf = 3;
-int level = 2;
+int level = 1;
 int difficult = 1;
 int opt = 0;
 int resume = 1;
@@ -68,6 +68,7 @@ char cont[2][2000] = {"dxball\\continue.bmp", "dxball\\gameover.bmp"};
 char go[200] = {"dxball\\pressR.bmp"};
 char power[6][200] = {"perks\\smallpaddle.bmp", "perks\\bigpaddle.bmp", "perks\\fastball.bmp", "perks\\slowball.bmp", "perks\\addlife.bmp", "perks\\throughbrick.bmp"};
 char query[2][200] = {"bc\\about.bmp", "bc\\instruction.bmp"};
+char brickss[4][2000] = {"brick\\red.bmp", "brick\\green.bmp", "brick\\pink.bmp","brick\\yellow.bmp"};
 
 struct LeaderboardEntry
 {
@@ -1075,13 +1076,11 @@ void showbrick()
 		{
 			if (i % 2 == 0)
 			{
-				iSetColor(253, 157, 18);
-				iFilledRectangle(b[i].x, b[i].y, b[i].dx, b[i].dy);
+				iShowBMP(b[i].x, b[i].y, brickss[0]);
 			}
 			else
 			{
-				iSetColor(197, 73, 161);
-				iFilledRectangle(b[i].x, b[i].y, b[i].dx, b[i].dy);
+				iShowBMP(b[i].x, b[i].y, brickss[1]);
 			}
 		}
 	}
@@ -1097,26 +1096,29 @@ void showbrick2()
 		{
 			if (i % 2 == 0)
 			{
-				iSetColor(189, 252, 201);
-				iFilledRectangle(b2[i].x, b2[i].y, b2[i].dx, b2[i].dy);
+				iShowBMP(b2[i].x, b2[i].y, brickss[0]);
 			}
 			else
 			{
-				iSetColor(255, 215, 0);
-				iFilledRectangle(b2[i].x, b2[i].y, b2[i].dx, b2[i].dy);
+				iShowBMP(b2[i].x, b2[i].y, brickss[1]);
 			}
 			if (i >= 0 && i < 10 || i >= 70 && i < 80)
 			{
 				if (b2[i].flag == 1 && b2[i].hp == 1)
 				{
-					iSetColor(0, 0, 130);
-					iFilledRectangle(b2[i].x, b2[i].y, b2[i].dx, b2[i].dy);
+					if(i%2==0)
+					{
+						iShowBMP(b2[i].x, b2[i].y, brickss[0]);
+					}
+					else
+					{
+						iShowBMP(b2[i].x, b2[i].y, brickss[1]);
+					}
 				}
 				else if (b2[i].flag == 0)
 				{
 					b2[i].hp = 2;
-					iSetColor(100, 150, 100);
-					iFilledRectangle(b2[i].x, b2[i].y, b2[i].dx, b2[i].dy);
+					iShowBMP(b2[i].x, b2[i].y, brickss[2]);
 				}
 			}
 		}
@@ -1134,31 +1136,33 @@ void showbrick3()
 		{
 			if (i % 2 == 0)
 			{
-				iSetColor(189, 252, 201);
-				iFilledRectangle(b3[i].x, b3[i].y, b3[i].dx, b3[i].dy);
+				iShowBMP(b3[i].x, b3[i].y, brickss[0]);
 			}
 			else
 			{
-				iSetColor(255, 215, 0);
-				iFilledRectangle(b3[i].x, b3[i].y, b3[i].dx, b3[i].dy);
+				iShowBMP(b3[i].x, b3[i].y, brickss[1]);
 			}
 			if (i >= 0 && i < 10 || i >= 90 && i < 100 || i % 10 == 0 || i % 10 == 9)
 			{
 				if (b3[i].flag == 2 && b3[i].hp == 2)
 				{
-					iSetColor(100, 150, 100);
-					iFilledRectangle(b3[i].x, b3[i].y, b3[i].dx, b3[i].dy);
+					iShowBMP(b3[i].x, b3[i].y, brickss[2]);
 				}
 				else if (b3[i].flag == 1 && b3[i].hp == 1)
 				{
-					iSetColor(0, 0, 130);
-					iFilledRectangle(b3[i].x, b3[i].y, b3[i].dx, b3[i].dy);
+					if(i%2==0)
+					{
+						iShowBMP(b3[i].x, b3[i].y, brickss[0]);
+					}
+					else
+					{
+						iShowBMP(b3[i].x, b3[i].y, brickss[1]);
+					}
 				}
 				else if (b3[i].flag == 0)
 				{
 					b3[i].hp = 3;
-					iSetColor(75, 0, 130);
-					iFilledRectangle(b3[i].x, b3[i].y, b3[i].dx, b3[i].dy);
+					iShowBMP(b3[i].x, b3[i].y, brickss[3]);
 				}
 			}
 		}
